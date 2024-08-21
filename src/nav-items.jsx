@@ -2,7 +2,7 @@ import { Home, Upload, Cog, Box, Download, User, Type } from "lucide-react";
 import HomePage from "./pages/HomePage";
 import UploadPage from "./pages/UploadPage";
 import ProcessingPage from "./pages/ProcessingPage";
-import ModelViewerPage from "./pages/ModelViewerPage";
+import ViewerPage from "./pages/ViewerPage";
 import ExportPage from "./pages/ExportPage";
 import UserDashboard from "./pages/UserDashboard";
 import TextTo3DPage from "./pages/TextTo3DPage";
@@ -36,7 +36,7 @@ export const navItems = [
     title: "Viewer",
     to: "/viewer",
     icon: <Box className="h-4 w-4" />,
-    page: <ModelViewerPage />,
+    page: <ViewerPage />,
   },
   {
     title: "Export",
