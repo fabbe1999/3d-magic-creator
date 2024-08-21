@@ -39,8 +39,8 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text mr-2">3D Model Creator</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">by Qualia Studios</span>
             </Link>
-            <span className="text-sm text-gray-600 dark:text-gray-400">by Qualia Studios</span>
           </div>
           <div className="hidden sm:flex sm:items-center sm:space-x-8">
             <Link

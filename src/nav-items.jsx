@@ -33,8 +33,8 @@ export const navItems = [
     page: <ProcessingPage />,
   },
   {
-    title: "Model Viewer",
-    to: "/model-viewer",
+    title: "Viewer",
+    to: "/viewer",
     icon: <Box className="h-4 w-4" />,
     page: <ModelViewerPage />,
   },
