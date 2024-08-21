@@ -13,12 +13,12 @@ const ViewerPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">3D Viewer</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="col-span-2 bg-gray-100 dark:bg-gray-800 rounded-lg p-4 flex items-center justify-center h-96">
+      <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">3D Model Viewer</h1>
+      <div className="flex flex-col md:flex-row gap-8">
+        <div className="w-full md:w-2/3 bg-gray-100 dark:bg-gray-800 rounded-lg p-4 flex items-center justify-center h-[500px]">
           <ThreeDElement type="cube" color={color} />
         </div>
-        <div className="space-y-6">
+        <div className="w-full md:w-1/3 space-y-6 bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
           <div>
             <h2 className="text-lg font-semibold mb-2">Rotate</h2>
             <Slider
@@ -61,21 +61,21 @@ const ViewerPage = () => {
               </ToggleGroupItem>
             </ToggleGroup>
           </div>
+          <div className="grid grid-cols-2 gap-4">
+            <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+              <Rotate3D className="mr-2 h-4 w-4" /> Rotate
+            </Button>
+            <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+              <ZoomIn className="mr-2 h-4 w-4" /> Zoom
+            </Button>
+            <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+              <Layers className="mr-2 h-4 w-4" /> Adjust Detail
+            </Button>
+            <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+              <Paintbrush className="mr-2 h-4 w-4" /> Change Color
+            </Button>
+          </div>
         </div>
-      </div>
-      <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
-          <Rotate3D className="mr-2 h-4 w-4" /> Rotate
-        </Button>
-        <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
-          <ZoomIn className="mr-2 h-4 w-4" /> Zoom
-        </Button>
-        <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
-          <Layers className="mr-2 h-4 w-4" /> Adjust Detail
-        </Button>
-        <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
-          <Paintbrush className="mr-2 h-4 w-4" /> Change Color
-        </Button>
       </div>
     </div>
   );

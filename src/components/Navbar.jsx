@@ -26,8 +26,9 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { title: 'Model Viewer', to: '/model-viewer' },
+    { title: 'Create', to: '/create' },
     { title: 'Processing', to: '/processing' },
+    { title: 'Model Viewer', to: '/model-viewer' },
     { title: 'Export', to: '/export' },
     { title: 'Dashboard', to: '/dashboard' },
   ];
