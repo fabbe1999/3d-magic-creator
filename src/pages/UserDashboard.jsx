@@ -27,12 +27,8 @@ const UserDashboard = ({ user }) => {
       <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">
         {user ? `Welcome, ${user.name}!` : 'User Dashboard'}
       </h1>
-      <h2 className="text-2xl font-semibold mb-4">
-        {user ? 'Your Saved Models' : 'Preview of Saved Models'}
-      </h2>
-      {renderModels()}
       {!user && (
-        <div className="mt-8 text-center">
+        <div className="mb-8 text-center">
           <p className="text-xl mb-4">Sign up or try it out to start creating and viewing your 3D models!</p>
           <div className="flex justify-center space-x-4">
             <Button onClick={() => navigate('/signup')} className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
@@ -44,6 +40,10 @@ const UserDashboard = ({ user }) => {
           </div>
         </div>
       )}
+      <h2 className="text-2xl font-semibold mb-4">
+        {user ? 'Your Saved Models' : 'Sample Models'}
+      </h2>
+      {renderModels()}
     </div>
   );
 };
