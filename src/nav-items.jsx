@@ -1,4 +1,5 @@
 import { Home, Upload, Cog, Box, Download, User, Type } from "lucide-react";
+import { Home, Upload, Cog, Box, Download, User, Type } from "lucide-react";
 import HomePage from "./pages/HomePage";
 import UploadPage from "./pages/UploadPage";
 import ProcessingPage from "./pages/ProcessingPage";
