@@ -7,7 +7,7 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(100, 100);
     mountRef.current.appendChild(renderer.domElement);
 
@@ -23,9 +23,22 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
         geometry = new THREE.BoxGeometry(1, 1, 1);
     }
 
-    const material = new THREE.MeshBasicMaterial({ color });
+    const material = new THREE.MeshPhongMaterial({ 
+      color, 
+      shininess: 100,
+      specular: 0x111111
+    });
     const shape = new THREE.Mesh(geometry, material);
     scene.add(shape);
+
+    // Add ambient light
+    const ambientLight = new THREE.AmbientLight(0x404040, 2);
+    scene.add(ambientLight);
+
+    // Add directional light
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 3, 5);
+    scene.add(directionalLight);
 
     camera.position.z = 3;
 
