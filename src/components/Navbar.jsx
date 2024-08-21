@@ -9,7 +9,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-4">
             <Link to="/" className="flex items-center">
-              <img src="/qualia-studios-logo.svg" alt="Qualia Studios Logo" className="h-8 w-auto" />
+              <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-xl">QS</span>
+              </div>
             </Link>
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">3D Model Creator</span>
           </div>
