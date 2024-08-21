@@ -52,6 +52,7 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
         qualia: "#B83280", // Pinkish purple color for Qualia Studios
+        navbar: "#F0F4F8", // Light blue-gray color for navbar background
       },
       borderRadius: {
         lg: "var(--radius)",
