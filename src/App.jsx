@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { navItems } from "./nav-items";
 import ViewerPage from "./pages/ViewerPage";
+import ModelViewerPage from "./pages/ModelViewerPage";
 import Layout from "./components/Layout";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
                 <Route key={to} path={to} element={page} />
               ))}
               <Route path="/viewer" element={<ViewerPage />} />
+              <Route path="/model-viewer" element={<ModelViewerPage />} />
             </Routes>
           </Layout>
         </BrowserRouter>
