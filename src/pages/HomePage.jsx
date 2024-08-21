@@ -16,7 +16,7 @@ const HomePage = () => {
         >
           3D Model Creator
           <motion.span
-            className="ml-2 text-sm font-bold bg-red-600 text-white px-2 py-1 rounded-full transform rotate-12 inline-block"
+            className="ml-2 text-xs font-bold bg-red-600 text-white px-1.5 py-0.5 rounded-full transform rotate-12 inline-block"
             initial={{ scale: 0, rotate: 0 }}
             animate={{ scale: 1, rotate: 12 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -51,7 +51,7 @@ const HomePage = () => {
         </motion.div>
       </div>
       <div className="flex justify-center space-x-8 mt-12">
-        <ThreeDElement type="cube" color="#4A5568" />
+        <ThreeDElement type="cube" color="#A0AEC0" />
         <ThreeDElement type="pyramid" color="#ED64A6" />
         <ThreeDElement type="torus" color="#4299E1" />
       </div>
