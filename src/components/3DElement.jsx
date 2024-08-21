@@ -29,17 +29,19 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
     const material = new THREE.MeshPhongMaterial({ 
       color, 
       shininess: 100,
-      specular: 0x111111
+      specular: 0x444444,
+      transparent: true,
+      opacity: 0.8
     });
     const shape = new THREE.Mesh(geometry, material);
     scene.add(shape);
 
     // Add ambient light
-    const ambientLight = new THREE.AmbientLight(0x404040, 2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
 
     // Add directional light
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
 

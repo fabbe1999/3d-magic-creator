@@ -1,10 +1,11 @@
-import { Home, Upload, Cog, Box, Download, User } from "lucide-react";
+import { Home, Upload, Cog, Box, Download, User, Type } from "lucide-react";
 import HomePage from "./pages/HomePage";
 import UploadPage from "./pages/UploadPage";
 import ProcessingPage from "./pages/ProcessingPage";
 import ModelViewerPage from "./pages/ModelViewerPage";
 import ExportPage from "./pages/ExportPage";
 import UserDashboard from "./pages/UserDashboard";
+import TextTo3DPage from "./pages/TextTo3DPage";
 
 export const navItems = [
   {
@@ -18,6 +19,12 @@ export const navItems = [
     to: "/upload",
     icon: <Upload className="h-4 w-4" />,
     page: <UploadPage />,
+  },
+  {
+    title: "Text to 3D",
+    to: "/text-to-3d",
+    icon: <Type className="h-4 w-4" />,
+    page: <TextTo3DPage />,
   },
   {
     title: "Processing",
