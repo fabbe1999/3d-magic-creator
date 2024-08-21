@@ -18,7 +18,7 @@ const Navbar = () => {
               <Link
                 key={to}
                 to={to}
-                className="text-gray-600 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out"
+                className="text-gray-600 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out"
               >
                 {title}
               </Link>
