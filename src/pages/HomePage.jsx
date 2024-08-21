@@ -16,7 +16,7 @@ const HomePage = () => {
         >
           3D Model Creator
           <motion.span
-            className="ml-2 text-xs font-bold bg-red-600 text-white px-1.5 py-0.5 rounded-full transform rotate-12 inline-block"
+            className="ml-2 text-xs font-bold bg-red-600 text-white dark:text-gray-900 px-1.5 py-0.5 rounded-full transform rotate-12 inline-block"
             initial={{ scale: 0, rotate: 0 }}
             animate={{ scale: 1, rotate: 12 }}
             transition={{ duration: 0.5, delay: 0.3 }}
