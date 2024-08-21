@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-// ThreeDElement import removed as it's no longer used
 import { motion } from 'framer-motion';
 
 const HomePage = () => {
@@ -48,16 +47,6 @@ const HomePage = () => {
               Text to 3D
             </Button>
           </Link>
-        </motion.div>
-        <motion.div
-          className="mt-12 flex justify-center space-x-8"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <ThreeDElement type="pyramid" color="#EC4899" />
-          <ThreeDElement type="cube" color="#8B5CF6" />
-          <ThreeDElement type="torus" color="#3B82F6" />
         </motion.div>
       </div>
     </div>
