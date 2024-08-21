@@ -7,7 +7,7 @@ const ProcessingPage = () => {
       <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Processing Your Image</h1>
       <div className="max-w-md mx-auto">
         <Progress value={33} className="mb-4 bg-gradient-to-r from-blue-500 to-purple-600" />
-        <p className="text-center text-lg text-gray-600">Creating your 3D model... Please wait.</p>
+        <p className="text-center text-lg text-gray-600 dark:text-gray-300">Creating your 3D model... Please wait.</p>
       </div>
     </div>
   );

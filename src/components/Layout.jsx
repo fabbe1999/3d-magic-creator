@@ -4,15 +4,17 @@ import Footer from './Footer';
 import { useTheme } from '../hooks/useTheme';
 
 const Layout = ({ children }) => {
-  useTheme(); // This will initialize the theme
+  const { theme } = useTheme();
 
   return (
-    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-      <Navbar />
-      <main className="flex-grow">
-        {children}
-      </main>
-      <Footer />
+    <div className={`flex flex-col min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
+      <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };

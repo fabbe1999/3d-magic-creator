@@ -4,8 +4,8 @@ const ModelViewerPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">3D Model Viewer</h1>
-      <div className="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
-        <p className="text-xl text-gray-600">3D Model Viewer Placeholder</p>
+      <div className="bg-gray-200 dark:bg-gray-700 h-96 rounded-lg flex items-center justify-center">
+        <p className="text-xl text-gray-600 dark:text-gray-300">3D Model Viewer Placeholder</p>
       </div>
       <div className="mt-6">
         <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Controls</h2>
