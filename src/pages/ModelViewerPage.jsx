@@ -21,17 +21,25 @@ const ModelViewerPage = () => {
     renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+    const geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
+    const material = new THREE.MeshStandardMaterial({ 
+      color: 0x00ff00,
+      metalness: 0.3,
+      roughness: 0.4,
+    });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    const light = new THREE.PointLight(0xffffff, 1, 100);
-    light.position.set(10, 10, 10);
-    scene.add(light);
+    const pointLight = new THREE.PointLight(0xffffff, 2, 100);
+    pointLight.position.set(10, 10, 10);
+    scene.add(pointLight);
 
-    const ambientLight = new THREE.AmbientLight(0x404040);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
 
     camera.position.z = 5;
 
