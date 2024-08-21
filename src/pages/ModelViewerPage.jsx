@@ -1,16 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Rotate3D, ZoomIn, Paintbrush, Layers } from 'lucide-react';
+import { Rotate3D, ZoomIn, Paintbrush, Layers, Download } from 'lucide-react';
 
 const ModelViewerPage = () => {
+  const navigate = useNavigate();
   const mountRef = useRef(null);
   const sceneRef = useRef(null);
   const [zoom, setZoom] = useState(50);
   const [viewMode, setViewMode] = useState('solid');
+
+  const handleExport = () => {
+    navigate('/export');
+  };
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -146,6 +152,11 @@ const ModelViewerPage = () => {
             <ToggleGroupItem value="solid">Solid</ToggleGroupItem>
             <ToggleGroupItem value="textured">Textured</ToggleGroupItem>
           </ToggleGroup>
+        </div>
+        <div className="mt-6">
+          <Button onClick={handleExport} className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+            <Download className="mr-2 h-4 w-4" /> Export Model
+          </Button>
         </div>
       </div>
     </div>
