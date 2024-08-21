@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { navItems } from '../nav-items';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
+import UserMenu from './UserMenu';
+import AuthModal from './AuthModal';
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const [user, setUser] = useState(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  const handleLogout = () => {
+    // Here you would typically clear the user's session
+    setUser(null);
+  };
+
+  const handleLogin = (userData) => {
+    // Here you would typically set the user's session
+    setUser(userData);
+    setIsAuthModalOpen(false);
+  };
 
   return (
     <nav className="bg-navbar-light dark:bg-navbar-dark text-gray-800 dark:text-white shadow-lg">
@@ -33,9 +48,19 @@ const Navbar = () => {
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
+            <UserMenu
+              user={user}
+              onLogout={handleLogout}
+              onOpenAuthModal={() => setIsAuthModalOpen(true)}
+            />
           </div>
         </div>
       </div>
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        onLogin={handleLogin}
+      />
     </nav>
   );
 };
