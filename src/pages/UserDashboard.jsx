@@ -40,9 +40,11 @@ const UserDashboard = ({ user }) => {
           </div>
         </div>
       )}
-      <h2 className="text-2xl font-semibold mb-4">
-        {user ? 'Your Saved Models' : 'Sample Models'}
-      </h2>
+      {user && (
+        <h2 className="text-2xl font-semibold mb-4">
+          Your Saved Models
+        </h2>
+      )}
       {renderModels()}
     </div>
   );
