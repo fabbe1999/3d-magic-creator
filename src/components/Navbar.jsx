@@ -8,16 +8,14 @@ const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <nav className="bg-navbar dark:bg-gray-800 text-gray-800 dark:text-white shadow-lg">
+    <nav className="bg-navbar-light dark:bg-navbar-dark text-gray-800 dark:text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             <Link to="/" className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">QS</span>
-              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">3D Model Creator</span>
             </Link>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">3D Model Creator</span>
+            <span className="text-sm italic text-gray-600 dark:text-gray-400">By Qualia Studios</span>
           </div>
           <div className="hidden sm:flex sm:items-center sm:space-x-8">
             {navItems.map(({ title, to }) => (
