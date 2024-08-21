@@ -1,4 +1,4 @@
-import { Home, Upload, Cog, Cube, Download, User } from "lucide-react";
+import { Home, Upload, Cog, Box, Download, User } from "lucide-react";
 import HomePage from "./pages/HomePage";
 import UploadPage from "./pages/UploadPage";
 import ProcessingPage from "./pages/ProcessingPage";
@@ -28,7 +28,7 @@ export const navItems = [
   {
     title: "Model Viewer",
     to: "/model-viewer",
-    icon: <Cube className="h-4 w-4" />,
+    icon: <Box className="h-4 w-4" />,
     page: <ModelViewerPage />,
   },
   {
