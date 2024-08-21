@@ -30,7 +30,7 @@ const HomePage = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Transform your ideas into stunning 3D models with ease!
+          Transform your ideas into 3D models with ease
         </motion.p>
         <motion.div
           className="flex justify-center space-x-4"
@@ -52,7 +52,7 @@ const HomePage = () => {
       </div>
       <div className="flex justify-center space-x-8 mt-12">
         <ThreeDElement type="cube" color="#4A5568" />
-        <ThreeDElement type="sphere" color="#ED64A6" />
+        <ThreeDElement type="pyramid" color="#ED64A6" />
         <ThreeDElement type="torus" color="#4299E1" />
       </div>
     </div>
