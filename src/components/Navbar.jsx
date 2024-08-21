@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { navItems } from '../nav-items';
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Sun, ChevronDown } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 import UserMenu from './UserMenu';
 import AuthModal from './AuthModal';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -12,15 +17,21 @@ const Navbar = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   const handleLogout = () => {
-    // Here you would typically clear the user's session
     setUser(null);
   };
 
   const handleLogin = (userData) => {
-    // Here you would typically set the user's session
     setUser(userData);
     setIsAuthModalOpen(false);
   };
+
+  const navItems = [
+    { title: 'Home', to: '/' },
+    { title: 'Model Viewer', to: '/model-viewer' },
+    { title: 'Processing', to: '/processing' },
+    { title: 'Export', to: '/export' },
+    { title: 'Dashboard', to: '/dashboard' },
+  ];
 
   return (
     <nav className="bg-navbar-light dark:bg-navbar-dark text-gray-800 dark:text-white shadow-lg">
@@ -42,6 +53,19 @@ const Navbar = () => {
                 {title}
               </Link>
             ))}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                Create <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <Link to="/upload" className="w-full">Upload</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link to="/text-to-3d" className="w-full">Text to 3D</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
