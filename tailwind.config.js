@@ -51,6 +51,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        qualia: "#B83280", // Pinkish purple color for Qualia Studios
       },
       borderRadius: {
         lg: "var(--radius)",
