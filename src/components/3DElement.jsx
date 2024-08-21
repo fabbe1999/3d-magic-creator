@@ -5,6 +5,8 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
   const mountRef = useRef(null);
 
   useEffect(() => {
+    if (!mountRef.current) return;
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -36,19 +38,19 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
     const shape = new THREE.Mesh(geometry, material);
     scene.add(shape);
 
-    // Add ambient light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambientLight);
 
-    // Add directional light
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
 
     camera.position.z = 3;
 
+    let animationFrameId;
+
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
       shape.rotation.x += 0.01;
       shape.rotation.y += 0.01;
       renderer.render(scene, camera);
@@ -57,7 +59,14 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
     animate();
 
     return () => {
-      mountRef.current.removeChild(renderer.domElement);
+      cancelAnimationFrame(animationFrameId);
+      if (mountRef.current) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
+      // Dispose of Three.js objects
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
     };
   }, [type, color]);
 
