@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
+import ThreeDElement from '../components/3DElement';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
-      <div className="text-center z-10">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-900">
+      <div className="text-center z-10 mb-8">
         <motion.h1
           className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text flex items-center justify-center"
           initial={{ y: -50, opacity: 0 }}
@@ -15,7 +16,7 @@ const HomePage = () => {
         >
           3D Model Creator
           <motion.span
-            className="ml-2 text-sm font-bold bg-yellow-400 text-gray-900 px-2 py-1 rounded-full transform rotate-12 inline-block"
+            className="ml-2 text-sm font-bold bg-red-600 text-white px-2 py-1 rounded-full transform rotate-12 inline-block"
             initial={{ scale: 0, rotate: 0 }}
             animate={{ scale: 1, rotate: 12 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -48,6 +49,11 @@ const HomePage = () => {
             </Button>
           </Link>
         </motion.div>
+      </div>
+      <div className="flex justify-center space-x-8 mt-12">
+        <ThreeDElement type="cube" color="#4A5568" />
+        <ThreeDElement type="sphere" color="#ED64A6" />
+        <ThreeDElement type="torus" color="#4299E1" />
       </div>
     </div>
   );
