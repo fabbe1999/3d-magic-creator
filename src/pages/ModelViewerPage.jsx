@@ -8,6 +8,7 @@ import { Rotate3D, ZoomIn, Paintbrush, Layers } from 'lucide-react';
 
 const ModelViewerPage = () => {
   const mountRef = useRef(null);
+  const sceneRef = useRef(null);
   const [zoom, setZoom] = useState(50);
   const [viewMode, setViewMode] = useState('solid');
 
@@ -36,53 +37,65 @@ const ModelViewerPage = () => {
     controls.dampingFactor = 0.25;
     controls.enableZoom = true;
 
+    sceneRef.current = { scene, camera, renderer, controls, cube };
+
     const animate = () => {
-      requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-      controls.update();
-      renderer.render(scene, camera);
+      if (sceneRef.current) {
+        const { renderer, scene, camera, controls, cube } = sceneRef.current;
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        controls.update();
+        renderer.render(scene, camera);
+      }
     };
     animate();
 
     const handleResize = () => {
-      camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+      if (sceneRef.current && mountRef.current) {
+        const { camera, renderer } = sceneRef.current;
+        camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+      }
     };
 
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      mountRef.current.removeChild(renderer.domElement);
+      if (mountRef.current && sceneRef.current) {
+        mountRef.current.removeChild(sceneRef.current.renderer.domElement);
+      }
+      if (sceneRef.current) {
+        sceneRef.current.controls.dispose();
+        sceneRef.current.renderer.dispose();
+      }
     };
   }, []);
 
   useEffect(() => {
-    // Update camera zoom based on slider value
-    if (mountRef.current) {
-      const camera = mountRef.current.children[0].camera;
+    if (sceneRef.current) {
+      const { camera } = sceneRef.current;
       camera.zoom = zoom / 50;
       camera.updateProjectionMatrix();
     }
   }, [zoom]);
 
   useEffect(() => {
-    // Update view mode
-    if (mountRef.current) {
-      const mesh = mountRef.current.children[0].scene.children[0];
+    if (sceneRef.current) {
+      const { cube } = sceneRef.current;
       switch (viewMode) {
         case 'wireframe':
-          mesh.material.wireframe = true;
+          cube.material.wireframe = true;
           break;
         case 'solid':
-          mesh.material.wireframe = false;
-          mesh.material.map = null;
+          cube.material.wireframe = false;
+          cube.material.map = null;
           break;
         case 'textured':
-          mesh.material.wireframe = false;
-          // Add texture logic here
+          cube.material.wireframe = false;
+          // Add texture logic here if needed
           break;
         default:
           break;
