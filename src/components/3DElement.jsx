@@ -13,8 +13,11 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
 
     let geometry;
     switch (type) {
-      case 'sphere':
-        geometry = new THREE.SphereGeometry(1, 32, 32);
+      case 'octahedron':
+        geometry = new THREE.OctahedronGeometry(1);
+        break;
+      case 'torus':
+        geometry = new THREE.TorusGeometry(0.7, 0.3, 16, 100);
         break;
       case 'pyramid':
         geometry = new THREE.ConeGeometry(1, 1, 4);
