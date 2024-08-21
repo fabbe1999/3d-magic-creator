@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import ThreeDElement from '../components/3DElement';
+// ThreeDElement import removed as it's no longer used
 import { motion } from 'framer-motion';
 
 const HomePage = () => {
@@ -14,9 +14,15 @@ const HomePage = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <ThreeDElement type="cube" color="#4F46E5" />
           3D Model Creator
-          <ThreeDElement type="torus" color="#7C3AED" />
+          <motion.span
+            className="ml-2 text-sm font-bold bg-yellow-400 text-gray-900 px-2 py-1 rounded-full transform rotate-12 inline-block"
+            initial={{ scale: 0, rotate: 0 }}
+            animate={{ scale: 1, rotate: 12 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            BETA
+          </motion.span>
         </motion.h1>
         <motion.p
           className="text-xl text-gray-600 dark:text-gray-300 mb-8"
