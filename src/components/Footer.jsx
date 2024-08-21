@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <div className="mb-4 sm:mb-0">
-            <p>&copy; 2024 3D Model Creator. All rights reserved.</p>
+            <p>&copy; 2024 Qualia Studios. All rights reserved.</p>
           </div>
           <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
             <a

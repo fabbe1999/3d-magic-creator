@@ -38,8 +38,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text mr-2">3D Model Creator</span>
-              <span className="text-sm text-gray-600 dark:text-gray-400">by Qualia Studios</span>
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">3D Model Creator</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400 ml-2">by Qualia Studios</span>
             </Link>
           </div>
           <div className="hidden sm:flex sm:items-center sm:space-x-8">
