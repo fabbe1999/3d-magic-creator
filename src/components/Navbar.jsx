@@ -11,11 +11,11 @@ const Navbar = () => {
     <nav className="bg-navbar-light dark:bg-navbar-dark text-gray-800 dark:text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-col items-start">
             <Link to="/" className="flex items-center">
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">3D Model Creator</span>
             </Link>
-            <span className="text-sm italic text-gray-600 dark:text-gray-400">By Qualia Studios</span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">By Qualia Studios</span>
           </div>
           <div className="hidden sm:flex sm:items-center sm:space-x-8">
             {navItems.map(({ title, to }) => (
