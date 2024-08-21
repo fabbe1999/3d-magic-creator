@@ -30,6 +30,9 @@ const ModelViewerPage = () => {
     light.position.set(10, 10, 10);
     scene.add(light);
 
+    const ambientLight = new THREE.AmbientLight(0x404040);
+    scene.add(ambientLight);
+
     camera.position.z = 5;
 
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -75,15 +78,14 @@ const ModelViewerPage = () => {
   }, []);
 
   useEffect(() => {
-    if (sceneRef.current) {
-      const { camera } = sceneRef.current;
-      camera.zoom = zoom / 50;
-      camera.updateProjectionMatrix();
+    if (sceneRef.current && sceneRef.current.camera) {
+      sceneRef.current.camera.zoom = zoom / 50;
+      sceneRef.current.camera.updateProjectionMatrix();
     }
   }, [zoom]);
 
   useEffect(() => {
-    if (sceneRef.current) {
+    if (sceneRef.current && sceneRef.current.cube) {
       const { cube } = sceneRef.current;
       switch (viewMode) {
         case 'wireframe':
