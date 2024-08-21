@@ -26,7 +26,6 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { title: 'Home', to: '/' },
     { title: 'Model Viewer', to: '/model-viewer' },
     { title: 'Processing', to: '/processing' },
     { title: 'Export', to: '/export' },
@@ -44,15 +43,12 @@ const Navbar = () => {
             <span className="text-sm text-gray-600 dark:text-gray-400">by Qualia Studios</span>
           </div>
           <div className="hidden sm:flex sm:items-center sm:space-x-8">
-            {navItems.map(({ title, to }) => (
-              <Link
-                key={to}
-                to={to}
-                className="text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out"
-              >
-                {title}
-              </Link>
-            ))}
+            <Link
+              to="/"
+              className="text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out"
+            >
+              Home
+            </Link>
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
                 Create <ChevronDown className="ml-1 h-4 w-4" />
@@ -66,6 +62,15 @@ const Navbar = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            {navItems.map(({ title, to }) => (
+              <Link
+                key={to}
+                to={to}
+                className="text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out"
+              >
+                {title}
+              </Link>
+            ))}
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
