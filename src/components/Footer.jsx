@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Discord } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -17,7 +17,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
             >
-              <Discord size={20} />
+              <MessageCircle size={20} />
               <span>Join Discord Community</span>
             </a>
             <div className="flex space-x-4">
