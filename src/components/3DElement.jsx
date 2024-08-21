@@ -23,8 +23,8 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
 
     let geometry;
     switch (type) {
-      case 'octahedron':
-        geometry = new THREE.OctahedronGeometry(1, 2); // Increase detail
+      case 'sphere':
+        geometry = new THREE.SphereGeometry(0.8, 32, 32); // Add sphere with high detail
         break;
       case 'torus':
         geometry = new THREE.TorusGeometry(0.7, 0.3, 32, 200); // Increase detail
@@ -32,8 +32,11 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
       case 'pyramid':
         geometry = new THREE.ConeGeometry(1, 1, 4, 2); // Increase detail
         break;
-      default:
+      case 'cube':
         geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2); // Increase detail
+        break;
+      default:
+        geometry = new THREE.SphereGeometry(0.8, 32, 32); // Default to sphere
     }
 
     const material = new THREE.MeshPhysicalMaterial({
