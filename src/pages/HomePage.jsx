@@ -14,7 +14,7 @@ const HomePage = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <ThreeDElement type="sphere" color="#4F46E5" />
+          <ThreeDElement type="cube" color="#4F46E5" />
           3D Model Creator
           <ThreeDElement type="torus" color="#7C3AED" />
         </motion.h1>

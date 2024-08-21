@@ -33,10 +33,10 @@ const ThreeDElement = ({ type = 'cube', color = '#B83280' }) => {
         geometry = new THREE.ConeGeometry(1, 1, 4, 2); // Increase detail
         break;
       case 'cube':
-        geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2); // Increase detail
+        geometry = new THREE.BoxGeometry(0.8, 0.8, 0.8, 4, 4, 4); // Increase detail and adjust size
         break;
       default:
-        geometry = new THREE.SphereGeometry(0.8, 32, 32); // Default to sphere
+        geometry = new THREE.BoxGeometry(0.8, 0.8, 0.8, 4, 4, 4); // Default to cube
     }
 
     const material = new THREE.MeshPhysicalMaterial({
