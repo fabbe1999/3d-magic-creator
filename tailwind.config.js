@@ -1,21 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
+  darkMode: 'class',
   content: [
     "./pages/**/*.{js,jsx}",
     "./components/**/*.{js,jsx}",
     "./app/**/*.{js,jsx}",
     "./src/**/*.{js,jsx}",
   ],
-  prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -52,7 +44,10 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
         qualia: "#B83280", // Pinkish purple color for Qualia Studios
-        navbar: "#F0F4F8", // Light blue-gray color for navbar background
+        navbar: {
+          light: "#F0F4F8", // Light blue-gray color for navbar background in light mode
+          dark: "#1F2937", // Dark blue-gray color for navbar background in dark mode
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
