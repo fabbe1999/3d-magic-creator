@@ -27,14 +27,14 @@ const AboutPage = () => {
             <div className="mb-4 flex justify-center">
               <ThreeDElement type="cube" color="#4299E1" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Fabian Kerj</h3>
+            <h3 className="text-xl font-semibold mb-2">Max Fallstrom</h3>
             <p className="text-gray-600 dark:text-gray-300">Chief Yoink Officer</p>
           </div>
           <div className="text-center">
             <div className="mb-4 flex justify-center">
               <ThreeDElement type="torus" color="#ED64A6" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">Max Fallstrom</h3>
+            <h3 className="text-xl font-semibold mb-2">Fabian Kerj</h3>
             <p className="text-gray-600 dark:text-gray-300">Chief Sheish Officer</p>
           </div>
         </div>
