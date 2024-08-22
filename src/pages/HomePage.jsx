@@ -6,7 +6,7 @@ import BackgroundCube from '../components/BackgroundCube';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-dark-100 relative overflow-hidden">
+    <div className="relative min-h-screen flex flex-col items-center justify-center bg-white dark:bg-dark-100 overflow-hidden">
       <BackgroundCube />
       <div className="text-center z-10 mb-8">
         <motion.h1

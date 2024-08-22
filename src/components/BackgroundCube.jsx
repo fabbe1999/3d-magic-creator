@@ -16,7 +16,7 @@ const BackgroundCube = () => {
 
     const geometry = new THREE.BoxGeometry(200, 200, 200);
     const material = new THREE.MeshBasicMaterial({
-      color: 0x4299E1, // Muted blue color from the existing palette
+      color: 0x4299E1,
       wireframe: true,
       transparent: true,
       opacity: 0.1,
@@ -71,7 +71,7 @@ const BackgroundCube = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }} />;
+  return <div ref={mountRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, pointerEvents: 'none' }} />;
 };
 
 export default BackgroundCube;
