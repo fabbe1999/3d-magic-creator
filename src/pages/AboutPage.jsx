@@ -9,13 +9,13 @@ const AboutPage = () => {
       <section className="mb-12">
         <h2 className="text-3xl font-semibold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Our Vision</h2>
         <p className="text-lg mb-4">
-          At Qualia Studios, we're pioneering the future of generative 3D technology. Our mission is to revolutionize digital creation by merging cutting-edge AI with immersive 3D environments.
+          At Qualia Studios, we're working on developing generative 3D technology. Our goal is to improve digital creation by combining AI with 3D environments.
         </p>
         <p className="text-lg mb-4">
-          We believe that the next frontier in computing lies in a deep understanding of three-dimensional space. By drawing inspiration from both physics and neuroscience, we're developing AI systems that can perceive, interpret, and generate 3D environments with unprecedented accuracy and creativity.
+          We're focusing on enhancing AI's understanding of three-dimensional space. By applying concepts from physics and neuroscience, we aim to create AI systems that can work with 3D environments more effectively.
         </p>
         <p className="text-lg">
-          Our goal is to enhance the intelligence of computing systems by imbuing them with a fundamental grasp of spatial relationships and physical laws. This approach not only advances AI capabilities in fields like computer vision and robotics but also opens up new possibilities in virtual reality, architectural design, and scientific simulation.
+          Our work aims to improve AI capabilities in areas like computer vision and robotics, while also exploring new possibilities in virtual reality, architectural design, and scientific simulation.
         </p>
       </section>
       
@@ -27,14 +27,14 @@ const AboutPage = () => {
               <ThreeDElement type="cube" color="#4299E1" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Fabian Kerj</h3>
-            <p className="text-gray-600 dark:text-gray-300">Co-founder & Chief Yoink Officer</p>
+            <p className="text-gray-600 dark:text-gray-300">Chief Yoink Officer</p>
           </div>
           <div className="text-center">
             <div className="mb-4 flex justify-center">
               <ThreeDElement type="torus" color="#ED64A6" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Max Fallstrom</h3>
-            <p className="text-gray-600 dark:text-gray-300">Co-founder & Chief Sheish Officer</p>
+            <p className="text-gray-600 dark:text-gray-300">Chief Sheish Officer</p>
           </div>
         </div>
       </section>
