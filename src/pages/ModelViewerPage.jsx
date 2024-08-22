@@ -35,7 +35,7 @@ const ModelViewerPage = () => {
     renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry(1.2, 1.2, 1.2, 64, 64, 64);
+    const geometry = new THREE.BoxGeometry(1.2, 1.2, 1.2);
     const material = new THREE.MeshPhysicalMaterial({ 
       color: 0x00ff00,
       metalness: 0.8,
@@ -51,7 +51,7 @@ const ModelViewerPage = () => {
     const wireframeGeometry = new THREE.WireframeGeometry(geometry);
     const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 });
     const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
-    cube.add(wireframe);
+    scene.add(wireframe);
     wireframe.visible = false;
 
     const pointLight = new THREE.PointLight(0xffffff, 1.2, 100);
@@ -78,7 +78,7 @@ const ModelViewerPage = () => {
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.5;
 
-    sceneRef.current = { scene, camera, renderer, controls, cube };
+    sceneRef.current = { scene, camera, renderer, controls, cube, wireframe };
 
     const animate = () => {
       if (sceneRef.current) {
@@ -124,7 +124,7 @@ const ModelViewerPage = () => {
         lastTime = time;
         
         if (isRotating) {
-          sceneRef.current.cube.rotation.x += rotationSpeed * (deltaTime / 16.67); // 60 FPS as baseline
+          sceneRef.current.cube.rotation.x += rotationSpeed * (deltaTime / 16.67);
           sceneRef.current.cube.rotation.y += rotationSpeed * (deltaTime / 16.67);
         }
         sceneRef.current.renderer.render(sceneRef.current.scene, sceneRef.current.camera);
@@ -149,21 +149,20 @@ const ModelViewerPage = () => {
   }, [zoom]);
 
   useEffect(() => {
-    if (sceneRef.current && sceneRef.current.cube) {
-      const { cube } = sceneRef.current;
-      const wireframe = cube.children[0];
+    if (sceneRef.current && sceneRef.current.cube && sceneRef.current.wireframe) {
+      const { cube, wireframe } = sceneRef.current;
       switch (viewMode) {
         case 'wireframe':
-          cube.material.visible = false;
+          cube.visible = false;
           wireframe.visible = true;
           break;
         case 'solid':
-          cube.material.visible = true;
+          cube.visible = true;
           wireframe.visible = false;
           cube.material.map = null;
           break;
         case 'textured':
-          cube.material.visible = true;
+          cube.visible = true;
           wireframe.visible = false;
           // Add texture logic here if needed
           break;

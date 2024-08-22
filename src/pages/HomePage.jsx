@@ -18,16 +18,49 @@ const HomePage = () => {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // Create a larger cube with increased mesh count and thicker lines
-    const geometry = new THREE.BoxGeometry(20, 20, 20, 24, 24, 24);
+    // Create a larger cube with reduced mesh count and thicker lines
+    const geometry = new THREE.BoxGeometry(20, 20, 20, 8, 8, 8);
     const material = new THREE.LineBasicMaterial({ 
-      color: 0x3A5D7C, // Even darker, less bright blue color
-      linewidth: 2, // Thicker lines (note: linewidth > 1 may not work on all GPUs)
+      color: 0x3A5D7C,
       transparent: true,
-      opacity: 0.4 // Slightly increased opacity for better visibility
+      opacity: 0.6
     });
-    const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), material);
+    const wireframeGeometry = new THREE.EdgesGeometry(geometry);
+    const wireframe = new THREE.LineSegments(wireframeGeometry, material);
     scene.add(wireframe);
+
+    // Add a subtle glow effect
+    const glowMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        c: { type: "f", value: 0.1 },
+        p: { type: "f", value: 1.4 },
+        glowColor: { type: "c", value: new THREE.Color(0x3A5D7C) }
+      },
+      vertexShader: `
+        varying vec3 vNormal;
+        void main() {
+          vNormal = normalize(normalMatrix * normal);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 glowColor;
+        uniform float c;
+        uniform float p;
+        varying vec3 vNormal;
+        void main() {
+          float intensity = pow(c - dot(vNormal, vec3(0.0, 0.0, 1.0)), p);
+          gl_FragColor = vec4(glowColor, intensity);
+        }
+      `,
+      side: THREE.FrontSide,
+      blending: THREE.AdditiveBlending,
+      transparent: true
+    });
+
+    const glowMesh = new THREE.Mesh(geometry, glowMaterial);
+    glowMesh.scale.multiplyScalar(1.05);
+    scene.add(glowMesh);
 
     // Position the camera inside the cube
     camera.position.set(0, 0, 5);
