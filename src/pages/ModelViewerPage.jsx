@@ -5,12 +5,13 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Rotate3D, ZoomIn, Paintbrush, Layers, Download, Pause } from 'lucide-react';
+import { Rotate3D, ZoomIn, Paintbrush, Layers, Download, Pause, Play } from 'lucide-react';
 
 const ModelViewerPage = () => {
   const navigate = useNavigate();
   const mountRef = useRef(null);
   const sceneRef = useRef(null);
+  const animationRef = useRef(null);
   const [zoom, setZoom] = useState(50);
   const [viewMode, setViewMode] = useState('solid');
   const [rotationSpeed, setRotationSpeed] = useState(0.01);
@@ -23,7 +24,7 @@ const ModelViewerPage = () => {
   };
 
   const toggleRotation = () => {
-    setIsRotating(!isRotating);
+    setIsRotating((prev) => !prev);
   };
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const ModelViewerPage = () => {
     const animate = () => {
       if (sceneRef.current) {
         const { renderer, scene, camera, controls, cube } = sceneRef.current;
-        requestAnimationFrame(animate);
+        animationRef.current = requestAnimationFrame(animate);
         if (isRotating) {
           cube.rotation.x += rotationSpeed;
           cube.rotation.y += rotationSpeed;
@@ -98,8 +99,11 @@ const ModelViewerPage = () => {
         sceneRef.current.controls.dispose();
         sceneRef.current.renderer.dispose();
       }
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-  }, [rotationSpeed]);
+  }, []);
 
   useEffect(() => {
     if (sceneRef.current && sceneRef.current.camera) {
@@ -143,7 +147,8 @@ const ModelViewerPage = () => {
               <Button size="sm"><Paintbrush className="mr-2 h-4 w-4" /> Texture</Button>
               <Button size="sm"><Layers className="mr-2 h-4 w-4" /> Layers</Button>
               <Button size="sm" onClick={toggleRotation}>
-                <Pause className="mr-2 h-4 w-4" /> {isRotating ? 'Stop Rotation' : 'Start Rotation'}
+                {isRotating ? <Pause className="mr-2 h-4 w-4" /> : <Play className="mr-2 h-4 w-4" />}
+                {isRotating ? 'Stop Rotation' : 'Start Rotation'}
               </Button>
             </div>
           </div>
