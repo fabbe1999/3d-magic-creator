@@ -36,41 +36,33 @@
   }
  
   .dark {
-    --background: 222.2 84% 2%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 7%; /* Very dark gray background */
+    --foreground: 0 0% 98%; /* Light text color for contrast */
  
-    --card: 222.2 84% 3%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 5%; /* Slightly darker gray for cards */
+    --card-foreground: 0 0% 98%;
  
-    --popover: 222.2 84% 2%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 4%; /* Even darker for popovers */
+    --popover-foreground: 0 0% 98%;
  
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
  
-    --secondary: 217.2 32.6% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 98%;
  
-    --muted: 217.2 32.6% 12%;
-    --muted-foreground: 215 20.2% 75%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 63%;
  
-    --accent: 217.2 32.6% 12%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 11%;
+    --accent-foreground: 0 0% 98%;
  
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
  
-    --border: 217.2 32.6% 12%;
-    --input: 217.2 32.6% 12%;
-    --ring: 212.7 26.8% 83.9%;
-
-    --background: 220 26% 9%; /* Even darker background */
-    --card: 221 39% 7%; /* Even darker card background */
-    --popover: 220 26% 9%; /* Even darker popover background */
-    --muted: 215 25% 18%; /* Even darker muted background */
-    --accent: 215 25% 18%; /* Even darker accent background */
-    --border: 216 34% 12%; /* Even darker border color */
-    --input: 216 34% 12%; /* Even darker input background */
+    --border: 0 0% 13%;
+    --input: 0 0% 11%;
+    --ring: 0 0% 83.9%;
   }
 }
  
