@@ -14,17 +14,17 @@ const BackgroundCube = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry(400, 400, 400);
+    const geometry = new THREE.BoxGeometry(800, 800, 800);
     const material = new THREE.MeshBasicMaterial({
       color: 0x4299E1,
       wireframe: true,
       transparent: true,
-      opacity: 0.1,
+      opacity: 0.15,
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 300;
+    camera.position.z = 600;
 
     sceneRef.current = { scene, camera, renderer, cube };
 
@@ -71,7 +71,7 @@ const BackgroundCube = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, pointerEvents: 'none' }} />;
+  return <div ref={mountRef} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '100vh', zIndex: -1, pointerEvents: 'none' }} />;
 };
 
 export default BackgroundCube;
