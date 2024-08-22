@@ -13,7 +13,10 @@ const HomePage = () => {
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    mountRef.current.appendChild(renderer.domElement);
+    
+    if (mountRef.current) {
+      mountRef.current.appendChild(renderer.domElement);
+    }
 
     // Create an even larger cube
     const geometry = new THREE.BoxGeometry(8, 8, 8);
@@ -48,7 +51,13 @@ const HomePage = () => {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
-      mountRef.current.removeChild(renderer.domElement);
+      if (mountRef.current && renderer.domElement.parentNode === mountRef.current) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
+      // Dispose of Three.js objects
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
     };
   }, []);
 
