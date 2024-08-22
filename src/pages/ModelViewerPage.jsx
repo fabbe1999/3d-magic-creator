@@ -113,19 +113,17 @@ const ModelViewerPage = () => {
 
   useEffect(() => {
     const animateRotation = () => {
-      if (sceneRef.current && isRotating) {
-        const { cube } = sceneRef.current;
-        cube.rotation.x += rotationSpeed;
-        cube.rotation.y += rotationSpeed;
-        sceneRef.current.rotationAnimationId = requestAnimationFrame(animateRotation);
+      if (sceneRef.current && sceneRef.current.cube) {
+        if (isRotating) {
+          sceneRef.current.cube.rotation.x += rotationSpeed;
+          sceneRef.current.cube.rotation.y += rotationSpeed;
+        }
+        sceneRef.current.renderer.render(sceneRef.current.scene, sceneRef.current.camera);
       }
+      sceneRef.current.rotationAnimationId = requestAnimationFrame(animateRotation);
     };
 
-    if (isRotating) {
-      animateRotation();
-    } else if (sceneRef.current && sceneRef.current.rotationAnimationId) {
-      cancelAnimationFrame(sceneRef.current.rotationAnimationId);
-    }
+    sceneRef.current.rotationAnimationId = requestAnimationFrame(animateRotation);
 
     return () => {
       if (sceneRef.current && sceneRef.current.rotationAnimationId) {
