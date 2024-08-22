@@ -10,29 +10,29 @@ const BackgroundCube = () => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry(20, 20, 20);
+    const geometry = new THREE.BoxGeometry(50, 50, 50);
     const material = new THREE.MeshBasicMaterial({
       color: 0x4299E1,
       wireframe: true,
       transparent: true,
-      opacity: 0.1,
-      side: THREE.BackSide
+      opacity: 0.2,
+      side: THREE.DoubleSide
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 10;
+    camera.position.z = 30;
 
     sceneRef.current = { scene, camera, renderer, cube, geometry, material };
 
     const animate = () => {
       if (sceneRef.current.cube && sceneRef.current.renderer && sceneRef.current.scene && sceneRef.current.camera) {
-        sceneRef.current.cube.rotation.x += 0.0005;
-        sceneRef.current.cube.rotation.y += 0.0005;
+        sceneRef.current.cube.rotation.x += 0.002;
+        sceneRef.current.cube.rotation.y += 0.002;
         sceneRef.current.renderer.render(sceneRef.current.scene, sceneRef.current.camera);
       }
       sceneRef.current.animationFrameId = requestAnimationFrame(animate);
@@ -72,7 +72,7 @@ const BackgroundCube = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }} />;
+  return <div ref={mountRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }} />;
 };
 
 export default BackgroundCube;
