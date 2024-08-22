@@ -18,30 +18,24 @@ const HomePage = () => {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // Create a larger, higher fidelity cube with thicker edges
-    const geometry = new THREE.BoxGeometry(8, 8, 8, 32, 32, 32);
-    const edgesGeometry = new THREE.EdgesGeometry(geometry);
-    const edgesMaterial = new THREE.LineBasicMaterial({ color: 0x4299E1, linewidth: 2 });
-    const edges = new THREE.LineSegments(edgesGeometry, edgesMaterial);
-    scene.add(edges);
-
+    // Create a larger, higher fidelity cube
+    const geometry = new THREE.BoxGeometry(12, 12, 12, 32, 32, 32);
     const material = new THREE.MeshBasicMaterial({ 
       color: 0x4299E1,
+      wireframe: true,
       transparent: true,
-      opacity: 0.1
+      opacity: 0.3
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 15;
+    camera.position.z = 20;
 
-    // Animation loop with even slower rotation
+    // Animation loop with slow rotation
     const animate = () => {
       requestAnimationFrame(animate);
       cube.rotation.x += 0.0005;
       cube.rotation.y += 0.0005;
-      edges.rotation.x += 0.0005;
-      edges.rotation.y += 0.0005;
       renderer.render(scene, camera);
     };
     animate();
