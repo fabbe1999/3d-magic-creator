@@ -14,7 +14,7 @@ const BackgroundCube = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry(50, 50, 50);
+    const geometry = new THREE.BoxGeometry(100, 100, 100);
     const material = new THREE.MeshBasicMaterial({
       color: 0x4299E1, // Muted blue color from the existing palette
       wireframe: true,
@@ -25,14 +25,14 @@ const BackgroundCube = () => {
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 30;
+    camera.position.z = 50;
 
     sceneRef.current = { scene, camera, renderer, cube };
 
     const animate = () => {
       if (sceneRef.current.cube && sceneRef.current.renderer && sceneRef.current.scene && sceneRef.current.camera) {
-        sceneRef.current.cube.rotation.x += 0.001;
-        sceneRef.current.cube.rotation.y += 0.001;
+        sceneRef.current.cube.rotation.x += 0.0005;
+        sceneRef.current.cube.rotation.y += 0.0005;
         sceneRef.current.renderer.render(sceneRef.current.scene, sceneRef.current.camera);
       }
       sceneRef.current.animationFrameId = requestAnimationFrame(animate);
