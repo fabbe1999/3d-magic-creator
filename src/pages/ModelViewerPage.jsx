@@ -149,10 +149,10 @@ const ModelViewerPage = () => {
         <div className="mt-6">
           <h2 className="text-lg font-semibold mb-2">Rotation Speed</h2>
           <Slider
-            value={[rotationSpeed * 1000]}
-            onValueChange={(value) => setRotationSpeed(value[0] / 1000)}
-            max={20}
-            step={1}
+            value={[rotationSpeed * 100]}
+            onValueChange={(value) => setRotationSpeed(value[0] / 100)}
+            max={2}
+            step={0.01}
             className="w-full"
           />
         </div>
