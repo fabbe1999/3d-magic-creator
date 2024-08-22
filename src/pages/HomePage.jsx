@@ -18,16 +18,16 @@ const HomePage = () => {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // Create a larger cube with further reduced mesh count
-    const geometry = new THREE.BoxGeometry(20, 20, 20, 16, 16, 16);
-    const material = new THREE.MeshBasicMaterial({ 
-      color: 0x4A6D8C, // Darker, less bright blue color
-      wireframe: true,
+    // Create a larger cube with increased mesh count and thicker lines
+    const geometry = new THREE.BoxGeometry(20, 20, 20, 24, 24, 24);
+    const material = new THREE.LineBasicMaterial({ 
+      color: 0x3A5D7C, // Even darker, less bright blue color
+      linewidth: 2, // Thicker lines (note: linewidth > 1 may not work on all GPUs)
       transparent: true,
-      opacity: 0.35 // Further reduced opacity for a subtle effect
+      opacity: 0.4 // Slightly increased opacity for better visibility
     });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), material);
+    scene.add(wireframe);
 
     // Position the camera inside the cube
     camera.position.set(0, 0, 5);
@@ -39,9 +39,9 @@ const HomePage = () => {
       time += 0.0005; // Even slower camera movement
       requestAnimationFrame(animate);
       
-      // Rotate the cube more slowly
-      cube.rotation.x += 0.0001;
-      cube.rotation.y += 0.0001;
+      // Rotate the wireframe more slowly
+      wireframe.rotation.x += 0.0001;
+      wireframe.rotation.y += 0.0001;
       
       // Move the camera in a circular path inside the cube
       camera.position.x = Math.sin(time) * 6;

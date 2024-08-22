@@ -4,7 +4,6 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-// Remove this import as it's no longer needed
 import { Rotate3D, ZoomIn, Paintbrush, Layers, Download, Pause, Play } from 'lucide-react';
 
 const ModelViewerPage = () => {
@@ -48,6 +47,12 @@ const ModelViewerPage = () => {
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
+
+    const wireframeGeometry = new THREE.WireframeGeometry(geometry);
+    const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 });
+    const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
+    cube.add(wireframe);
+    wireframe.visible = false;
 
     const pointLight = new THREE.PointLight(0xffffff, 1.2, 100);
     pointLight.position.set(5, 5, 5);
@@ -112,11 +117,15 @@ const ModelViewerPage = () => {
   }, []);
 
   useEffect(() => {
-    const animateRotation = () => {
+    let lastTime = 0;
+    const animateRotation = (time) => {
       if (sceneRef.current && sceneRef.current.cube) {
+        const deltaTime = time - lastTime;
+        lastTime = time;
+        
         if (isRotating) {
-          sceneRef.current.cube.rotation.x += rotationSpeed;
-          sceneRef.current.cube.rotation.y += rotationSpeed;
+          sceneRef.current.cube.rotation.x += rotationSpeed * (deltaTime / 16.67); // 60 FPS as baseline
+          sceneRef.current.cube.rotation.y += rotationSpeed * (deltaTime / 16.67);
         }
         sceneRef.current.renderer.render(sceneRef.current.scene, sceneRef.current.camera);
       }
@@ -142,16 +151,20 @@ const ModelViewerPage = () => {
   useEffect(() => {
     if (sceneRef.current && sceneRef.current.cube) {
       const { cube } = sceneRef.current;
+      const wireframe = cube.children[0];
       switch (viewMode) {
         case 'wireframe':
-          cube.material.wireframe = true;
+          cube.material.visible = false;
+          wireframe.visible = true;
           break;
         case 'solid':
-          cube.material.wireframe = false;
+          cube.material.visible = true;
+          wireframe.visible = false;
           cube.material.map = null;
           break;
         case 'textured':
-          cube.material.wireframe = false;
+          cube.material.visible = true;
+          wireframe.visible = false;
           // Add texture logic here if needed
           break;
         default:
