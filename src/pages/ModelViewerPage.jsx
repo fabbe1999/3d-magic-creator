@@ -5,7 +5,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Rotate3D, ZoomIn, Paintbrush, Layers, Download } from 'lucide-react';
+import { Rotate3D, ZoomIn, Paintbrush, Layers, Download, Pause } from 'lucide-react';
 
 const ModelViewerPage = () => {
   const navigate = useNavigate();
@@ -14,11 +14,16 @@ const ModelViewerPage = () => {
   const [zoom, setZoom] = useState(50);
   const [viewMode, setViewMode] = useState('solid');
   const [rotationSpeed, setRotationSpeed] = useState(0.01);
+  const [isRotating, setIsRotating] = useState(true);
   const MIN_ROTATION_SPEED = 0;
   const MAX_ROTATION_SPEED = 0.02;
 
   const handleExport = () => {
     navigate('/export');
+  };
+
+  const toggleRotation = () => {
+    setIsRotating(!isRotating);
   };
 
   useEffect(() => {
@@ -63,8 +68,10 @@ const ModelViewerPage = () => {
       if (sceneRef.current) {
         const { renderer, scene, camera, controls, cube } = sceneRef.current;
         requestAnimationFrame(animate);
-        cube.rotation.x += rotationSpeed;
-        cube.rotation.y += rotationSpeed;
+        if (isRotating) {
+          cube.rotation.x += rotationSpeed;
+          cube.rotation.y += rotationSpeed;
+        }
         controls.update();
         renderer.render(scene, camera);
       }
@@ -135,6 +142,9 @@ const ModelViewerPage = () => {
               <Button size="sm"><ZoomIn className="mr-2 h-4 w-4" /> Zoom</Button>
               <Button size="sm"><Paintbrush className="mr-2 h-4 w-4" /> Texture</Button>
               <Button size="sm"><Layers className="mr-2 h-4 w-4" /> Layers</Button>
+              <Button size="sm" onClick={toggleRotation}>
+                <Pause className="mr-2 h-4 w-4" /> {isRotating ? 'Stop Rotation' : 'Start Rotation'}
+              </Button>
             </div>
           </div>
           <div>
