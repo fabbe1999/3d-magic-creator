@@ -13,6 +13,7 @@ const ModelViewerPage = () => {
   const sceneRef = useRef(null);
   const [zoom, setZoom] = useState(50);
   const [viewMode, setViewMode] = useState('solid');
+  const [rotationSpeed, setRotationSpeed] = useState(0.01);
 
   const handleExport = () => {
     navigate('/export');
@@ -60,8 +61,8 @@ const ModelViewerPage = () => {
       if (sceneRef.current) {
         const { renderer, scene, camera, controls, cube } = sceneRef.current;
         requestAnimationFrame(animate);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
+        cube.rotation.x += rotationSpeed;
+        cube.rotation.y += rotationSpeed;
         controls.update();
         renderer.render(scene, camera);
       }
@@ -89,7 +90,7 @@ const ModelViewerPage = () => {
         sceneRef.current.renderer.dispose();
       }
     };
-  }, []);
+  }, [rotationSpeed]);
 
   useEffect(() => {
     if (sceneRef.current && sceneRef.current.camera) {
@@ -144,6 +145,16 @@ const ModelViewerPage = () => {
               className="w-full"
             />
           </div>
+        </div>
+        <div className="mt-6">
+          <h2 className="text-lg font-semibold mb-2">Rotation Speed</h2>
+          <Slider
+            value={[rotationSpeed * 1000]}
+            onValueChange={(value) => setRotationSpeed(value[0] / 1000)}
+            max={20}
+            step={1}
+            className="w-full"
+          />
         </div>
         <div className="mt-6">
           <h2 className="text-lg font-semibold mb-2">View Mode</h2>
