@@ -67,12 +67,8 @@ const ModelViewerPage = () => {
 
     const animate = () => {
       if (sceneRef.current) {
-        const { renderer, scene, camera, controls, cube } = sceneRef.current;
+        const { renderer, scene, camera, controls } = sceneRef.current;
         animationRef.current = requestAnimationFrame(animate);
-        if (isRotating) {
-          cube.rotation.x += rotationSpeed;
-          cube.rotation.y += rotationSpeed;
-        }
         controls.update();
         renderer.render(scene, camera);
       }
@@ -104,6 +100,29 @@ const ModelViewerPage = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    const animateRotation = () => {
+      if (sceneRef.current && isRotating) {
+        const { cube } = sceneRef.current;
+        cube.rotation.x += rotationSpeed;
+        cube.rotation.y += rotationSpeed;
+        sceneRef.current.rotationAnimationId = requestAnimationFrame(animateRotation);
+      }
+    };
+
+    if (isRotating) {
+      animateRotation();
+    } else if (sceneRef.current && sceneRef.current.rotationAnimationId) {
+      cancelAnimationFrame(sceneRef.current.rotationAnimationId);
+    }
+
+    return () => {
+      if (sceneRef.current && sceneRef.current.rotationAnimationId) {
+        cancelAnimationFrame(sceneRef.current.rotationAnimationId);
+      }
+    };
+  }, [isRotating, rotationSpeed]);
 
   useEffect(() => {
     if (sceneRef.current && sceneRef.current.camera) {
