@@ -42,12 +42,6 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="hidden sm:flex sm:items-center sm:space-x-8">
-            <Link
-              to="/"
-              className="text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out"
-            >
-              Home
-            </Link>
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
                 Create <ChevronDown className="ml-1 h-4 w-4" />
