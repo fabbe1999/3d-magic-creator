@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 
-const UserDashboard = ({ user }) => {
+const UserDashboard = ({ user, onOpenAuthModal }) => {
   const navigate = useNavigate();
   const savedModels = [
     { id: 1, name: 'Model 1', date: '2024-03-01' },
@@ -31,8 +31,8 @@ const UserDashboard = ({ user }) => {
         <div className="mb-8 text-center">
           <p className="text-xl mb-4">Sign up or try it out to start creating and viewing your 3D models!</p>
           <div className="flex justify-center space-x-4">
-            <Button onClick={() => navigate('/signup')} className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-              Sign Up
+            <Button onClick={onOpenAuthModal} className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+              Sign Up / Log In
             </Button>
             <Button onClick={() => navigate('/upload')} className="bg-gradient-to-r from-green-500 to-teal-600 text-white">
               Try It Out
