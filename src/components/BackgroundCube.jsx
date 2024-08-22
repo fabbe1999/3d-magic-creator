@@ -3,7 +3,7 @@ import * as THREE from 'three';
 
 const BackgroundCube = () => {
   const mountRef = useRef(null);
-  const sceneRef = useRef(null);
+  const sceneRef = useRef({});
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -27,25 +27,23 @@ const BackgroundCube = () => {
 
     camera.position.z = 10;
 
-    sceneRef.current = { scene, camera, renderer, cube };
+    sceneRef.current = { scene, camera, renderer, cube, geometry, material };
 
     const animate = () => {
-      if (sceneRef.current) {
-        const { renderer, scene, camera, cube } = sceneRef.current;
-        requestAnimationFrame(animate);
-        cube.rotation.x += 0.0005;
-        cube.rotation.y += 0.0005;
-        renderer.render(scene, camera);
+      if (sceneRef.current.cube && sceneRef.current.renderer && sceneRef.current.scene && sceneRef.current.camera) {
+        sceneRef.current.cube.rotation.x += 0.0005;
+        sceneRef.current.cube.rotation.y += 0.0005;
+        sceneRef.current.renderer.render(sceneRef.current.scene, sceneRef.current.camera);
       }
+      sceneRef.current.animationFrameId = requestAnimationFrame(animate);
     };
     animate();
 
     const handleResize = () => {
-      if (sceneRef.current && mountRef.current) {
-        const { camera, renderer } = sceneRef.current;
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+      if (sceneRef.current.camera && sceneRef.current.renderer) {
+        sceneRef.current.camera.aspect = window.innerWidth / window.innerHeight;
+        sceneRef.current.camera.updateProjectionMatrix();
+        sceneRef.current.renderer.setSize(window.innerWidth, window.innerHeight);
       }
     };
 
@@ -53,15 +51,23 @@ const BackgroundCube = () => {
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (sceneRef.current) {
-        const { scene, renderer, geometry, material } = sceneRef.current;
-        scene.remove(cube);
-        geometry.dispose();
-        material.dispose();
-        renderer.dispose();
-        if (mountRef.current && renderer.domElement) {
-          mountRef.current.removeChild(renderer.domElement);
-        }
+      if (sceneRef.current.animationFrameId) {
+        cancelAnimationFrame(sceneRef.current.animationFrameId);
+      }
+      if (sceneRef.current.scene && sceneRef.current.cube) {
+        sceneRef.current.scene.remove(sceneRef.current.cube);
+      }
+      if (sceneRef.current.geometry) {
+        sceneRef.current.geometry.dispose();
+      }
+      if (sceneRef.current.material) {
+        sceneRef.current.material.dispose();
+      }
+      if (sceneRef.current.renderer) {
+        sceneRef.current.renderer.dispose();
+      }
+      if (mountRef.current && sceneRef.current.renderer) {
+        mountRef.current.removeChild(sceneRef.current.renderer.domElement);
       }
     };
   }, []);
