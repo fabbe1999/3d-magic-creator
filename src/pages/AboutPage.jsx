@@ -9,13 +9,13 @@ const AboutPage = () => {
       <section className="mb-12">
         <h2 className="text-3xl font-semibold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Our Vision</h2>
         <p className="text-lg mb-4">
-          At Qualia Studios, we're at the forefront of generative 3D technology, pushing the boundaries of what's possible in digital creation and artificial intelligence.
+          At Qualia Studios, we're pioneering the future of generative 3D technology. Our mission is to revolutionize digital creation by merging cutting-edge AI with immersive 3D environments.
         </p>
         <p className="text-lg mb-4">
-          We believe that the future of computing lies in a deep understanding of three-dimensional space. By drawing inspiration from both physics and the human brain, we're developing systems that can perceive, interpret, and generate 3D environments with unprecedented accuracy and creativity.
+          We believe that the next frontier in computing lies in a deep understanding of three-dimensional space. By drawing inspiration from both physics and neuroscience, we're developing AI systems that can perceive, interpret, and generate 3D environments with unprecedented accuracy and creativity.
         </p>
         <p className="text-lg">
-          Our goal is to increase the intelligence of computing programs by imbuing them with a fundamental grasp of spatial relationships and physical laws. This approach not only enhances the capabilities of AI in fields like computer vision and robotics but also opens up new possibilities in areas such as virtual reality, architectural design, and scientific simulation.
+          Our goal is to enhance the intelligence of computing systems by imbuing them with a fundamental grasp of spatial relationships and physical laws. This approach not only advances AI capabilities in fields like computer vision and robotics but also opens up new possibilities in virtual reality, architectural design, and scientific simulation.
         </p>
       </section>
       
@@ -28,6 +28,9 @@ const AboutPage = () => {
             </div>
             <h3 className="text-xl font-semibold mb-2">Fabian Kerj</h3>
             <p className="text-gray-600 dark:text-gray-300">Co-founder & Chief Technology Officer</p>
+            <p className="mt-2 text-sm">
+              Fabian brings expertise in AI and computer graphics, driving our technological innovations.
+            </p>
           </div>
           <div className="text-center">
             <div className="mb-4 flex justify-center">
@@ -35,6 +38,9 @@ const AboutPage = () => {
             </div>
             <h3 className="text-xl font-semibold mb-2">Max Fallstrom</h3>
             <p className="text-gray-600 dark:text-gray-300">Co-founder & Chief Creative Officer</p>
+            <p className="mt-2 text-sm">
+              Max leads our creative direction, blending artistic vision with technological capabilities.
+            </p>
           </div>
         </div>
       </section>
