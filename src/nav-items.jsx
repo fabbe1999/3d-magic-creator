@@ -1,4 +1,4 @@
-import { Home, Upload, Cog, Box, Download, User, Type, Info } from "lucide-react";
+import { Home, Upload, Cog, Box, Download, User, Type, Info, Compass } from "lucide-react";
 import HomePage from "./pages/HomePage";
 import UploadPage from "./pages/UploadPage";
 import ProcessingPage from "./pages/ProcessingPage";
@@ -8,6 +8,7 @@ import ExportPage from "./pages/ExportPage";
 import UserDashboard from "./pages/UserDashboard";
 import TextTo3DPage from "./pages/TextTo3DPage";
 import AboutPage from "./pages/AboutPage";
+import DiscoveryPage from "./pages/DiscoveryPage";
 
 export const navItems = [
   {
@@ -51,6 +52,12 @@ export const navItems = [
     to: "/dashboard",
     icon: <User className="h-4 w-4" />,
     page: UserDashboard,
+  },
+  {
+    title: "Discover",
+    to: "/discover",
+    icon: <Compass className="h-4 w-4" />,
+    page: DiscoveryPage,
   },
   {
     title: "About",
