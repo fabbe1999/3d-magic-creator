@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+// Remove this import as it's no longer needed
 import { Rotate3D, ZoomIn, Paintbrush, Layers, Download, Pause, Play } from 'lucide-react';
 
 const ModelViewerPage = () => {
@@ -175,11 +175,29 @@ const ModelViewerPage = () => {
           </div>
           <div>
             <h2 className="text-lg font-semibold mb-2">View Mode</h2>
-            <ToggleGroup type="single" value={viewMode} onValueChange={(value) => value && setViewMode(value)}>
-              <ToggleGroupItem value="wireframe">Wireframe</ToggleGroupItem>
-              <ToggleGroupItem value="solid">Solid</ToggleGroupItem>
-              <ToggleGroupItem value="textured">Textured</ToggleGroupItem>
-            </ToggleGroup>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                size="sm"
+                variant={viewMode === 'wireframe' ? 'default' : 'outline'}
+                onClick={() => setViewMode('wireframe')}
+              >
+                Wireframe
+              </Button>
+              <Button
+                size="sm"
+                variant={viewMode === 'solid' ? 'default' : 'outline'}
+                onClick={() => setViewMode('solid')}
+              >
+                Solid
+              </Button>
+              <Button
+                size="sm"
+                variant={viewMode === 'textured' ? 'default' : 'outline'}
+                onClick={() => setViewMode('textured')}
+              >
+                Textured
+              </Button>
+            </div>
           </div>
           <div>
             <Button onClick={handleExport} className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
