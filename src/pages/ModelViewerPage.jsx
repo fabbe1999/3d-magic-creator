@@ -36,25 +36,32 @@ const ModelViewerPage = () => {
     renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1, 10, 10, 10);
-    const material = new THREE.MeshStandardMaterial({ 
+    const geometry = new THREE.BoxGeometry(1.1, 1.1, 1.1, 32, 32, 32);
+    const material = new THREE.MeshPhysicalMaterial({ 
       color: 0x00ff00,
-      metalness: 0.3,
-      roughness: 0.4,
+      metalness: 0.7,
+      roughness: 0.2,
+      clearcoat: 0.5,
+      clearcoatRoughness: 0.1,
+      reflectivity: 1,
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    const pointLight = new THREE.PointLight(0xffffff, 2, 100);
-    pointLight.position.set(10, 10, 10);
+    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+    pointLight.position.set(5, 5, 5);
     scene.add(pointLight);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 5, 5);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(-5, 10, 7);
     scene.add(directionalLight);
+
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+    hemiLight.position.set(0, 20, 0);
+    scene.add(hemiLight);
 
     camera.position.z = 5;
 
