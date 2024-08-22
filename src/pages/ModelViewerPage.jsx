@@ -13,9 +13,9 @@ const ModelViewerPage = () => {
   const sceneRef = useRef(null);
   const [zoom, setZoom] = useState(50);
   const [viewMode, setViewMode] = useState('solid');
-  const [rotationSpeed, setRotationSpeed] = useState(0.025);
+  const [rotationSpeed, setRotationSpeed] = useState(0.01);
   const MIN_ROTATION_SPEED = 0;
-  const MAX_ROTATION_SPEED = 0.05;
+  const MAX_ROTATION_SPEED = 0.02;
 
   const handleExport = () => {
     navigate('/export');
@@ -127,7 +127,7 @@ const ModelViewerPage = () => {
       <h1 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">3D Model Viewer</h1>
       <div className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-6">
         <div ref={mountRef} className="w-full h-[50vh] mb-6 rounded-lg overflow-hidden"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           <div>
             <h2 className="text-lg font-semibold mb-2">Controls</h2>
             <div className="flex flex-wrap gap-2">
@@ -147,30 +147,30 @@ const ModelViewerPage = () => {
               className="w-full"
             />
           </div>
-        </div>
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold mb-2">Rotation Speed</h2>
-          <Slider
-            value={[rotationSpeed]}
-            onValueChange={(value) => setRotationSpeed(value[0])}
-            min={MIN_ROTATION_SPEED}
-            max={MAX_ROTATION_SPEED}
-            step={0.001}
-            className="w-full"
-          />
-        </div>
-        <div className="mt-6">
-          <h2 className="text-lg font-semibold mb-2">View Mode</h2>
-          <ToggleGroup type="single" value={viewMode} onValueChange={(value) => value && setViewMode(value)}>
-            <ToggleGroupItem value="wireframe">Wireframe</ToggleGroupItem>
-            <ToggleGroupItem value="solid">Solid</ToggleGroupItem>
-            <ToggleGroupItem value="textured">Textured</ToggleGroupItem>
-          </ToggleGroup>
-        </div>
-        <div className="mt-6">
-          <Button onClick={handleExport} className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
-            <Download className="mr-2 h-4 w-4" /> Export Model
-          </Button>
+          <div>
+            <h2 className="text-lg font-semibold mb-2">Rotation Speed</h2>
+            <Slider
+              value={[rotationSpeed]}
+              onValueChange={(value) => setRotationSpeed(value[0])}
+              min={MIN_ROTATION_SPEED}
+              max={MAX_ROTATION_SPEED}
+              step={0.0001}
+              className="w-full"
+            />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold mb-2">View Mode</h2>
+            <ToggleGroup type="single" value={viewMode} onValueChange={(value) => value && setViewMode(value)}>
+              <ToggleGroupItem value="wireframe">Wireframe</ToggleGroupItem>
+              <ToggleGroupItem value="solid">Solid</ToggleGroupItem>
+              <ToggleGroupItem value="textured">Textured</ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+          <div>
+            <Button onClick={handleExport} className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+              <Download className="mr-2 h-4 w-4" /> Export Model
+            </Button>
+          </div>
         </div>
       </div>
     </div>
