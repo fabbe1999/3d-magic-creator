@@ -13,7 +13,7 @@ const ModelViewerPage = () => {
   const sceneRef = useRef(null);
   const [zoom, setZoom] = useState(50);
   const [viewMode, setViewMode] = useState('solid');
-  const [rotationSpeed, setRotationSpeed] = useState(0.5);
+  const [rotationSpeed, setRotationSpeed] = useState(50);
   const MAX_ROTATION_SPEED = 0.05;
 
   const handleExport = () => {
@@ -153,6 +153,7 @@ const ModelViewerPage = () => {
           <Slider
             value={[rotationSpeed]}
             onValueChange={(value) => setRotationSpeed(value[0])}
+            min={0}
             max={100}
             step={1}
             className="w-full"
