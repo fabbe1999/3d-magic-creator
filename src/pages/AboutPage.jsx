@@ -27,20 +27,14 @@ const AboutPage = () => {
               <ThreeDElement type="cube" color="#4299E1" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Fabian Kerj</h3>
-            <p className="text-gray-600 dark:text-gray-300">Co-founder & Chief Technology Officer</p>
-            <p className="mt-2 text-sm">
-              Fabian brings expertise in AI and computer graphics, driving our technological innovations.
-            </p>
+            <p className="text-gray-600 dark:text-gray-300">Co-founder & Chief Yoink Officer</p>
           </div>
           <div className="text-center">
             <div className="mb-4 flex justify-center">
               <ThreeDElement type="torus" color="#ED64A6" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Max Fallstrom</h3>
-            <p className="text-gray-600 dark:text-gray-300">Co-founder & Chief Creative Officer</p>
-            <p className="mt-2 text-sm">
-              Max leads our creative direction, blending artistic vision with technological capabilities.
-            </p>
+            <p className="text-gray-600 dark:text-gray-300">Co-founder & Chief Sheish Officer</p>
           </div>
         </div>
       </section>
