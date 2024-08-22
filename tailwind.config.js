@@ -46,7 +46,12 @@ module.exports = {
         qualia: "#B83280", // Pinkish purple color for Qualia Studios
         navbar: {
           light: "#F0F4F8", // Light blue-gray color for navbar background in light mode
-          dark: "#1F2937", // Dark blue-gray color for navbar background in dark mode
+          dark: "#0F172A", // Darker blue-gray color for navbar background in dark mode
+        },
+        dark: {
+          100: "#1E293B", // Darker shade for backgrounds
+          200: "#0F172A", // Even darker shade for contrasting elements
+          300: "#020617", // Darkest shade for specific highlights or accents
         },
       },
       borderRadius: {

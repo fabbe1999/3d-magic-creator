@@ -63,6 +63,14 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    --background: 220 26% 14%; /* Darker background */
+    --card: 221 39% 11%; /* Darker card background */
+    --popover: 220 26% 14%; /* Darker popover background */
+    --muted: 215 25% 27%; /* Darker muted background */
+    --accent: 215 25% 27%; /* Darker accent background */
+    --border: 216 34% 17%; /* Darker border color */
+    --input: 216 34% 17%; /* Darker input background */
   }
 }
  
