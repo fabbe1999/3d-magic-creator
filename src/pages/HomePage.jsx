@@ -18,13 +18,13 @@ const HomePage = () => {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // Create a larger cube with reduced mesh count
-    const geometry = new THREE.BoxGeometry(20, 20, 20, 24, 24, 24);
+    // Create a larger cube with further reduced mesh count
+    const geometry = new THREE.BoxGeometry(20, 20, 20, 16, 16, 16);
     const material = new THREE.MeshBasicMaterial({ 
-      color: 0x7F9CB5, // More muted blue color
+      color: 0x4A6D8C, // Darker, less bright blue color
       wireframe: true,
       transparent: true,
-      opacity: 0.4 // Slightly reduced opacity
+      opacity: 0.35 // Further reduced opacity for a subtle effect
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
@@ -33,19 +33,19 @@ const HomePage = () => {
     camera.position.set(0, 0, 5);
     camera.lookAt(new THREE.Vector3(1, 1, 1));
 
-    // Animation loop with slow rotation and camera movement
+    // Animation loop with slower rotation and camera movement
     let time = 0;
     const animate = () => {
-      time += 0.0008; // Slightly slower camera movement
+      time += 0.0005; // Even slower camera movement
       requestAnimationFrame(animate);
       
-      // Rotate the cube
-      cube.rotation.x += 0.00015;
-      cube.rotation.y += 0.00015;
+      // Rotate the cube more slowly
+      cube.rotation.x += 0.0001;
+      cube.rotation.y += 0.0001;
       
       // Move the camera in a circular path inside the cube
-      camera.position.x = Math.sin(time) * 5;
-      camera.position.z = Math.cos(time) * 5;
+      camera.position.x = Math.sin(time) * 6;
+      camera.position.z = Math.cos(time) * 6;
       camera.lookAt(new THREE.Vector3(0, 0, 0));
       
       renderer.render(scene, camera);
