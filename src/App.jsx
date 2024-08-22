@@ -47,6 +47,8 @@ const App = () => {
                 <Route path="/viewer" element={<ViewerPage />} />
                 <Route path="/model-viewer" element={<ModelViewerPage />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/help" element={<div>Help Page</div>} />
+                <Route path="/contact" element={<div>Contact Page</div>} />
               </Routes>
             </Layout>
           </BrowserRouter>
