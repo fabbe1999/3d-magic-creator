@@ -16,10 +16,10 @@ const BackgroundCube = () => {
 
     const geometry = new THREE.BoxGeometry(50, 50, 50);
     const material = new THREE.MeshBasicMaterial({
-      color: 0x4299E1,
+      color: 0x4299E1, // Muted blue color from the existing palette
       wireframe: true,
       transparent: true,
-      opacity: 0.2,
+      opacity: 0.1,
       side: THREE.DoubleSide
     });
     const cube = new THREE.Mesh(geometry, material);
@@ -27,12 +27,12 @@ const BackgroundCube = () => {
 
     camera.position.z = 30;
 
-    sceneRef.current = { scene, camera, renderer, cube, geometry, material };
+    sceneRef.current = { scene, camera, renderer, cube };
 
     const animate = () => {
       if (sceneRef.current.cube && sceneRef.current.renderer && sceneRef.current.scene && sceneRef.current.camera) {
-        sceneRef.current.cube.rotation.x += 0.002;
-        sceneRef.current.cube.rotation.y += 0.002;
+        sceneRef.current.cube.rotation.x += 0.001;
+        sceneRef.current.cube.rotation.y += 0.001;
         sceneRef.current.renderer.render(sceneRef.current.scene, sceneRef.current.camera);
       }
       sceneRef.current.animationFrameId = requestAnimationFrame(animate);
