@@ -13,7 +13,8 @@ const ModelViewerPage = () => {
   const sceneRef = useRef(null);
   const [zoom, setZoom] = useState(50);
   const [viewMode, setViewMode] = useState('solid');
-  const [rotationSpeed, setRotationSpeed] = useState(50);
+  const [rotationSpeed, setRotationSpeed] = useState(0.025);
+  const MIN_ROTATION_SPEED = 0;
   const MAX_ROTATION_SPEED = 0.05;
 
   const handleExport = () => {
@@ -62,9 +63,8 @@ const ModelViewerPage = () => {
       if (sceneRef.current) {
         const { renderer, scene, camera, controls, cube } = sceneRef.current;
         requestAnimationFrame(animate);
-        const actualRotationSpeed = (rotationSpeed / 100) * MAX_ROTATION_SPEED;
-        cube.rotation.x += actualRotationSpeed;
-        cube.rotation.y += actualRotationSpeed;
+        cube.rotation.x += rotationSpeed;
+        cube.rotation.y += rotationSpeed;
         controls.update();
         renderer.render(scene, camera);
       }
@@ -153,8 +153,9 @@ const ModelViewerPage = () => {
           <Slider
             value={[rotationSpeed]}
             onValueChange={(value) => setRotationSpeed(value[0])}
-            max={100}
-            step={1}
+            min={MIN_ROTATION_SPEED}
+            max={MAX_ROTATION_SPEED}
+            step={0.001}
             className="w-full"
           />
         </div>
