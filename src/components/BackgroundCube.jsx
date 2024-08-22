@@ -14,18 +14,17 @@ const BackgroundCube = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry(100, 100, 100);
+    const geometry = new THREE.BoxGeometry(200, 200, 200);
     const material = new THREE.MeshBasicMaterial({
       color: 0x4299E1, // Muted blue color from the existing palette
       wireframe: true,
       transparent: true,
       opacity: 0.1,
-      side: THREE.DoubleSide
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 50;
+    camera.position.z = 100;
 
     sceneRef.current = { scene, camera, renderer, cube };
 
