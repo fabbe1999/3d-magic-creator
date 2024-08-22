@@ -71,6 +71,12 @@ const Navbar = () => {
                 {title}
               </Link>
             ))}
+            <Link
+              to="/discover"
+              className="text-gray-600 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out"
+            >
+              Discover
+            </Link>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white"
