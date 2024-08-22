@@ -19,23 +19,35 @@ const HomePage = () => {
     }
 
     // Create a larger, higher fidelity cube
-    const geometry = new THREE.BoxGeometry(12, 12, 12, 32, 32, 32);
+    const geometry = new THREE.BoxGeometry(20, 20, 20, 32, 32, 32);
     const material = new THREE.MeshBasicMaterial({ 
       color: 0x4299E1,
       wireframe: true,
       transparent: true,
-      opacity: 0.3
+      opacity: 0.5
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 20;
+    // Position the camera inside the cube
+    camera.position.set(0, 0, 5);
+    camera.lookAt(new THREE.Vector3(1, 1, 1));
 
-    // Animation loop with slow rotation
+    // Animation loop with slow rotation and camera movement
+    let time = 0;
     const animate = () => {
+      time += 0.001;
       requestAnimationFrame(animate);
-      cube.rotation.x += 0.0005;
-      cube.rotation.y += 0.0005;
+      
+      // Rotate the cube
+      cube.rotation.x += 0.0002;
+      cube.rotation.y += 0.0002;
+      
+      // Move the camera in a circular path inside the cube
+      camera.position.x = Math.sin(time) * 5;
+      camera.position.z = Math.cos(time) * 5;
+      camera.lookAt(new THREE.Vector3(0, 0, 0));
+      
       renderer.render(scene, camera);
     };
     animate();
