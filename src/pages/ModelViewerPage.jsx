@@ -153,7 +153,6 @@ const ModelViewerPage = () => {
           <Slider
             value={[rotationSpeed]}
             onValueChange={(value) => setRotationSpeed(value[0])}
-            min={0}
             max={100}
             step={1}
             className="w-full"
