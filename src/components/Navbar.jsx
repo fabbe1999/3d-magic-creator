@@ -29,7 +29,6 @@ const Navbar = () => {
     { title: 'Processing', to: '/processing' },
     { title: 'Model Viewer', to: '/model-viewer' },
     { title: 'Dashboard', to: '/dashboard' },
-    { title: 'Discover', to: '/discover' },
   ];
 
   return (

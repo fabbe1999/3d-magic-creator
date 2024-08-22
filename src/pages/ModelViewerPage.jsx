@@ -20,7 +20,7 @@ const controlsRef = useRef(null);
   const MAX_ROTATION_SPEED = 0.02;
 
   const handleExport = () => {
-    navigate('/export');
+    navigate('/export', { state: { fromModelViewer: true } });
   };
 
   const toggleRotation = () => {
