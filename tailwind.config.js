@@ -49,9 +49,9 @@ module.exports = {
           dark: "#0F172A", // Darker blue-gray color for navbar background in dark mode
         },
         dark: {
-          100: "#1E293B", // Darker shade for backgrounds
-          200: "#0F172A", // Even darker shade for contrasting elements
-          300: "#020617", // Darkest shade for specific highlights or accents
+          100: "#0F172A", // Darker shade for backgrounds
+          200: "#020617", // Even darker shade for contrasting elements
+          300: "#000000", // Darkest shade for specific highlights or accents
         },
       },
       borderRadius: {

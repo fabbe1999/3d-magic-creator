@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className={`flex flex-col min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
-      <div className="bg-white dark:bg-dark-100 text-gray-900 dark:text-white min-h-screen">
+      <div className="bg-white dark:bg-dark-200 text-gray-900 dark:text-white min-h-screen">
         <Navbar />
         <main className="flex-grow">
           {children}

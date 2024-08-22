@@ -36,41 +36,41 @@
   }
  
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222.2 84% 2%;
     --foreground: 210 40% 98%;
  
-    --card: 222.2 84% 4.9%;
+    --card: 222.2 84% 3%;
     --card-foreground: 210 40% 98%;
  
-    --popover: 222.2 84% 4.9%;
+    --popover: 222.2 84% 2%;
     --popover-foreground: 210 40% 98%;
  
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
  
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 217.2 32.6% 12%;
     --secondary-foreground: 210 40% 98%;
  
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 217.2 32.6% 12%;
+    --muted-foreground: 215 20.2% 75%;
  
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 217.2 32.6% 12%;
     --accent-foreground: 210 40% 98%;
  
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
  
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 217.2 32.6% 12%;
+    --input: 217.2 32.6% 12%;
     --ring: 212.7 26.8% 83.9%;
 
-    --background: 220 26% 14%; /* Darker background */
-    --card: 221 39% 11%; /* Darker card background */
-    --popover: 220 26% 14%; /* Darker popover background */
-    --muted: 215 25% 27%; /* Darker muted background */
-    --accent: 215 25% 27%; /* Darker accent background */
-    --border: 216 34% 17%; /* Darker border color */
-    --input: 216 34% 17%; /* Darker input background */
+    --background: 220 26% 9%; /* Even darker background */
+    --card: 221 39% 7%; /* Even darker card background */
+    --popover: 220 26% 9%; /* Even darker popover background */
+    --muted: 215 25% 18%; /* Even darker muted background */
+    --accent: 215 25% 18%; /* Even darker accent background */
+    --border: 216 34% 12%; /* Even darker border color */
+    --input: 216 34% 12%; /* Even darker input background */
   }
 }
  
