@@ -28,8 +28,8 @@ const Navbar = () => {
   const navItems = [
     { title: 'Processing', to: '/processing' },
     { title: 'Model Viewer', to: '/model-viewer' },
-    { title: 'Export', to: '/export' },
     { title: 'Dashboard', to: '/dashboard' },
+    { title: 'Discover', to: '/discover' },
   ];
 
   return (

@@ -23,7 +23,7 @@ const HomePage = () => {
     const material = new THREE.LineBasicMaterial({ 
       color: 0x3A5D7C,
       transparent: true,
-      opacity: 0.4, // Reduced opacity for light mode
+      opacity: 0.2, // Further reduced opacity for light mode
       linewidth: 1.5
     });
     const wireframeGeometry = new THREE.WireframeGeometry(geometry);
@@ -34,7 +34,7 @@ const HomePage = () => {
     const solidMaterial = new THREE.MeshBasicMaterial({
       color: 0x1A2D3C,
       transparent: true,
-      opacity: 0.02 // Reduced opacity for light mode
+      opacity: 0.01 // Further reduced opacity for light mode
     });
     const solidMesh = new THREE.Mesh(geometry, solidMaterial);
     scene.add(solidMesh);
@@ -42,8 +42,8 @@ const HomePage = () => {
     // Add a subtle glow effect
     const glowMaterial = new THREE.ShaderMaterial({
       uniforms: {
-        c: { type: "f", value: 0.05 }, // Reduced glow intensity
-        p: { type: "f", value: 1.2 }, // Adjusted glow spread
+        c: { type: "f", value: 0.03 }, // Further reduced glow intensity
+        p: { type: "f", value: 1.5 }, // Adjusted glow spread
         glowColor: { type: "c", value: new THREE.Color(0x3A5D7C) }
       },
       vertexShader: `
