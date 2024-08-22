@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Info } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -22,7 +22,10 @@ const Footer = () => {
             </a>
             <div className="flex space-x-4">
               <Link to="/help" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Help</Link>
-              <Link to="/about" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</Link>
+              <Link to="/about" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white flex items-center">
+  <Info className="mr-1 h-4 w-4" />
+  About
+</Link>
               <Link to="/contact" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</Link>
             </div>
           </div>
