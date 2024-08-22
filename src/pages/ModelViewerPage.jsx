@@ -36,30 +36,31 @@ const ModelViewerPage = () => {
     renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry(1.1, 1.1, 1.1, 32, 32, 32);
+    const geometry = new THREE.BoxGeometry(1.2, 1.2, 1.2, 64, 64, 64);
     const material = new THREE.MeshPhysicalMaterial({ 
       color: 0x00ff00,
-      metalness: 0.7,
-      roughness: 0.2,
-      clearcoat: 0.5,
-      clearcoatRoughness: 0.1,
+      metalness: 0.8,
+      roughness: 0.1,
+      clearcoat: 0.7,
+      clearcoatRoughness: 0.05,
       reflectivity: 1,
+      envMapIntensity: 1.5,
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+    const pointLight = new THREE.PointLight(0xffffff, 1.2, 100);
     pointLight.position.set(5, 5, 5);
     scene.add(pointLight);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(-5, 10, 7);
     scene.add(directionalLight);
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.8);
     hemiLight.position.set(0, 20, 0);
     scene.add(hemiLight);
 
@@ -67,8 +68,10 @@ const ModelViewerPage = () => {
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.25;
+    controls.dampingFactor = 0.2;
     controls.enableZoom = true;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.5;
 
     sceneRef.current = { scene, camera, renderer, controls, cube };
 
