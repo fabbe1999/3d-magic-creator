@@ -1,5 +1,6 @@
 import React from 'react';
 import ThreeDElement from '../components/3DElement';
+import { Button } from "@/components/ui/button";
 
 const AboutPage = () => {
   return (
@@ -9,17 +10,17 @@ const AboutPage = () => {
       <section className="mb-12">
         <h2 className="text-3xl font-semibold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Our Vision</h2>
         <p className="text-lg mb-4">
-          At Qualia Studios, we're working on developing generative 3D technology. Our goal is to improve digital creation by combining AI with 3D environments.
+          At Qualia Studios, we're developing tools for 3D content creation. Our goal is to make it easier for everyone to bring their ideas to life in three dimensions.
         </p>
         <p className="text-lg mb-4">
-          We're focusing on enhancing AI's understanding of three-dimensional space. By applying concepts from physics and neuroscience, we aim to create AI systems that can work with 3D environments more effectively.
+          We're working on combining AI with 3D modeling to streamline the creation process. Our focus is on making intuitive tools that both beginners and professionals can use effectively.
         </p>
         <p className="text-lg">
-          Our work aims to improve AI capabilities in areas like computer vision and robotics, while also exploring new possibilities in virtual reality, architectural design, and scientific simulation.
+          We believe that by simplifying 3D creation, we can open up new possibilities in fields like design, education, and entertainment.
         </p>
       </section>
       
-      <section>
+      <section className="mb-12">
         <h2 className="text-3xl font-semibold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Our Team</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="text-center">
@@ -37,6 +38,13 @@ const AboutPage = () => {
             <p className="text-gray-600 dark:text-gray-300">Chief Sheish Officer</p>
           </div>
         </div>
+      </section>
+
+      <section className="text-center">
+        <h3 className="text-2xl font-semibold mb-4">Want to work on the future of 3D?</h3>
+        <Button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
+          Join Team
+        </Button>
       </section>
     </div>
   );
