@@ -18,13 +18,13 @@ const HomePage = () => {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // Create a larger cube with increased mesh density and visible wireframe
-    const geometry = new THREE.BoxGeometry(20, 20, 20, 32, 32, 32);
+    // Create a larger cube with reduced mesh density and visible wireframe
+    const geometry = new THREE.BoxGeometry(20, 20, 20, 16, 16, 16);
     const material = new THREE.LineBasicMaterial({ 
       color: 0x3A5D7C,
       transparent: true,
-      opacity: 0.6,
-      linewidth: 1
+      opacity: 0.8,
+      linewidth: 1.5
     });
     const wireframeGeometry = new THREE.WireframeGeometry(geometry);
     const wireframe = new THREE.LineSegments(wireframeGeometry, material);
@@ -34,7 +34,7 @@ const HomePage = () => {
     const solidMaterial = new THREE.MeshBasicMaterial({
       color: 0x1A2D3C,
       transparent: true,
-      opacity: 0.1
+      opacity: 0.05
     });
     const solidMesh = new THREE.Mesh(geometry, solidMaterial);
     scene.add(solidMesh);
