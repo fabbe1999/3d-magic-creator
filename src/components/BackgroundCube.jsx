@@ -14,7 +14,7 @@ const BackgroundCube = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry(200, 200, 200);
+    const geometry = new THREE.BoxGeometry(400, 400, 400);
     const material = new THREE.MeshBasicMaterial({
       color: 0x4299E1,
       wireframe: true,
@@ -24,7 +24,7 @@ const BackgroundCube = () => {
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 100;
+    camera.position.z = 300;
 
     sceneRef.current = { scene, camera, renderer, cube };
 
