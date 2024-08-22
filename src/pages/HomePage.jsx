@@ -18,13 +18,13 @@ const HomePage = () => {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // Create a larger, higher fidelity cube
-    const geometry = new THREE.BoxGeometry(20, 20, 20, 32, 32, 32);
+    // Create a larger cube with reduced mesh count
+    const geometry = new THREE.BoxGeometry(20, 20, 20, 24, 24, 24);
     const material = new THREE.MeshBasicMaterial({ 
-      color: 0x4299E1,
+      color: 0x7F9CB5, // More muted blue color
       wireframe: true,
       transparent: true,
-      opacity: 0.5
+      opacity: 0.4 // Slightly reduced opacity
     });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
@@ -36,12 +36,12 @@ const HomePage = () => {
     // Animation loop with slow rotation and camera movement
     let time = 0;
     const animate = () => {
-      time += 0.001;
+      time += 0.0008; // Slightly slower camera movement
       requestAnimationFrame(animate);
       
       // Rotate the cube
-      cube.rotation.x += 0.0002;
-      cube.rotation.y += 0.0002;
+      cube.rotation.x += 0.00015;
+      cube.rotation.y += 0.00015;
       
       // Move the camera in a circular path inside the cube
       camera.position.x = Math.sin(time) * 5;
