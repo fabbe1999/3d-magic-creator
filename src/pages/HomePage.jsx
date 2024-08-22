@@ -1,13 +1,60 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
-import BackgroundCube from '../components/BackgroundCube';
+import * as THREE from 'three';
 
 const HomePage = () => {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    // Three.js scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    mountRef.current.appendChild(renderer.domElement);
+
+    // Create a cube
+    const geometry = new THREE.BoxGeometry(2, 2, 2);
+    const material = new THREE.MeshBasicMaterial({ 
+      color: 0x4299E1,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.3
+    });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    camera.position.z = 5;
+
+    // Animation loop
+    const animate = () => {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    // Handle window resize
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      mountRef.current.removeChild(renderer.domElement);
+    };
+  }, []);
+
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-white dark:bg-dark-100">
-      <BackgroundCube />
+      <div ref={mountRef} className="absolute inset-0 z-0" />
       <div className="text-center z-10 mb-8">
         <motion.h1
           className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text flex items-center justify-center"
