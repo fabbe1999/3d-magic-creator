@@ -6,7 +6,7 @@ import ThreeDElement from '../components/3DElement';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-900">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-dark-100">
       <div className="text-center z-10 mb-8">
         <motion.h1
           className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text flex items-center justify-center"
