@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { navItems } from "./nav-items";
 import ViewerPage from "./pages/ViewerPage";
 import ModelViewerPage from "./pages/ModelViewerPage";
+import AboutPage from "./pages/AboutPage";
 import Layout from "./components/Layout";
 import AuthModal from "./components/AuthModal";
 
@@ -45,6 +46,7 @@ const App = () => {
                 ))}
                 <Route path="/viewer" element={<ViewerPage />} />
                 <Route path="/model-viewer" element={<ModelViewerPage />} />
+                <Route path="/about" element={<AboutPage />} />
               </Routes>
             </Layout>
           </BrowserRouter>
