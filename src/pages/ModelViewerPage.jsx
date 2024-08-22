@@ -15,6 +15,7 @@ const ModelViewerPage = () => {
   const [viewMode, setViewMode] = useState('solid');
   const [rotationSpeed, setRotationSpeed] = useState(0.01);
   const [isRotating, setIsRotating] = useState(true);
+const controlsRef = useRef(null);
   const MIN_ROTATION_SPEED = 0;
   const MAX_ROTATION_SPEED = 0.02;
 
@@ -23,7 +24,12 @@ const ModelViewerPage = () => {
   };
 
   const toggleRotation = () => {
-    setIsRotating((prev) => !prev);
+    setIsRotating((prev) => {
+      if (controlsRef.current) {
+        controlsRef.current.autoRotate = !prev;
+      }
+      return !prev;
+    });
   };
 
   useEffect(() => {
@@ -75,8 +81,9 @@ const ModelViewerPage = () => {
     controls.enableDamping = true;
     controls.dampingFactor = 0.2;
     controls.enableZoom = true;
-    controls.autoRotate = true;
+    controls.autoRotate = isRotating;
     controls.autoRotateSpeed = 0.5;
+    controlsRef.current = controls;
 
     sceneRef.current = { scene, camera, renderer, controls, cube, wireframe };
 

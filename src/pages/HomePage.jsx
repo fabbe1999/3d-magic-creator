@@ -19,11 +19,12 @@ const HomePage = () => {
     }
 
     // Create a larger cube with reduced mesh count and thicker lines
-    const geometry = new THREE.BoxGeometry(20, 20, 20, 8, 8, 8);
+    const geometry = new THREE.BoxGeometry(20, 20, 20, 16, 16, 16);
     const material = new THREE.LineBasicMaterial({ 
       color: 0x3A5D7C,
       transparent: true,
-      opacity: 0.6
+      opacity: 0.8,
+      linewidth: 2
     });
     const wireframeGeometry = new THREE.EdgesGeometry(geometry);
     const wireframe = new THREE.LineSegments(wireframeGeometry, material);
